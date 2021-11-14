@@ -8,8 +8,11 @@ import Button from '@mui/material/Button';
 // import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../../../Images/logo.png';
 import { Grid } from '@mui/material';
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
+  const { user, logOutUser } = useAuth();
   return (
     <Grid container>
       <Grid item xs={2} sm={12} md={12}>
@@ -33,17 +36,92 @@ const Navigation = () => {
             <MenuIcon />
           </IconButton> */}
               <img src={logo} style={{ marginLeft: '150px' }} alt="" />
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1, color: '#000' }}
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  marginLeft: '30%',
+                }}
               >
-                Home
-              </Typography>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      color: '#000',
+                      mr: 3,
+                      '&:hover': {
+                        color: '#FE495C',
+                      },
+                    }}
+                  >
+                    Home
+                  </Typography>
+                  {/* <Button color="inherit" sx={{ color: '#000' }}>
+                    Home
+                  </Button> */}
+                </Link>
 
-              <Button variant="outlined" color="inherit" sx={{ color: '#000' }}>
-                Login
-              </Button>
+                <Link to="/explore" style={{ textDecoration: 'none' }}>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      color: '#000',
+                      mr: 50,
+                      '&:hover': {
+                        color: '#5Ce7ed',
+                      },
+                    }}
+                  >
+                    Explore
+                  </Typography>
+
+                  {/* <Button color="inherit" sx={{ color: '#000' }}>
+                    Explore
+                  </Button> */}
+                </Link>
+                {/* ======================================================= */}
+
+                {user?.email ? (
+                  <>
+                    <Box>
+                      <NavLink to="/dashboard">
+                        <Button color="inherit">Dashboard</Button>
+                      </NavLink>
+                    </Box>
+                    <span style={{ margin: '0 10px' }}>
+                      Name: {user.displayName}{' '}
+                    </span>
+                    <span> {user.email}</span>
+                    <Button onClick={logOutUser} color="inherit">
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <NavLink to="/login" style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="outlined"
+                      color="inherit"
+                      sx={{ color: '#000' }}
+                    >
+                      Login
+                    </Button>
+                  </NavLink>
+                )}
+
+                {/* ==================================================== */}
+
+                {/* <Link to="/login" style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="outlined"
+                    color="inherit"
+                    sx={{ color: '#000' }}
+                  >
+                    Login
+                  </Button>
+                </Link> */}
+              </Box>
             </Toolbar>
           </AppBar>
         </Box>

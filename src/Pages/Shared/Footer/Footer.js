@@ -506,7 +506,7 @@ const Footer = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12}>
-            <Divider sx={{ color: '#FFF', my: 10 }} />
+            <Divider sx={{ color: '#FFF', my: 5 }} />
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
             <Typography
@@ -526,7 +526,7 @@ const Footer = () => {
               sx={{
                 color: '#FFF',
                 textAlign: 'end',
-                mb: 5,
+                mb: 4,
               }}
               variant="h6"
               gutterBottom
