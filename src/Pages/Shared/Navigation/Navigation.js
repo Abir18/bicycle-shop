@@ -7,16 +7,23 @@ import Button from '@mui/material/Button';
 // import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../../../Images/logo.png';
+import { Grid } from '@mui/material';
 
 const Navigation = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="sticky"
-        sx={{ backgroundColor: 'white', height: '100px', padding: '10px 0' }}
-      >
-        <Toolbar>
-          {/* <IconButton
+    <Grid container>
+      <Grid item xs={2} sm={12} md={12}>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar
+            position="fixed"
+            sx={{
+              backgroundColor: 'white',
+              height: '100px',
+              padding: '10px 0',
+            }}
+          >
+            <Toolbar>
+              {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -25,21 +32,23 @@ const Navigation = () => {
           >
             <MenuIcon />
           </IconButton> */}
-          <img src={logo} style={{ marginLeft: '150px' }} alt="" />
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, color: '#000' }}
-          >
-            Home
-          </Typography>
+              <img src={logo} style={{ marginLeft: '150px' }} alt="" />
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1, color: '#000' }}
+              >
+                Home
+              </Typography>
 
-          <Button variant="outlined" color="inherit" sx={{ color: '#000' }}>
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+              <Button variant="outlined" color="inherit" sx={{ color: '#000' }}>
+                Login
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 
