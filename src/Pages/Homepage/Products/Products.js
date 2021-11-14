@@ -16,7 +16,7 @@ const Products = () => {
         variant="h4"
         component="div"
       >
-        All Products {bikes.length}
+        All Products
       </Typography>
       <Container>
         <Grid

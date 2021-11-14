@@ -18,16 +18,16 @@ const Slider = () => {
     >
       <div>
         <img src={slider1} alt="" />
-        <h1 className="legend">Haibike XDURO AMT</h1>
+        {/* <h1 className="legend">Haibike XDURO AMT</h1> */}
         {/* <p className="legend">Haibike XDURO AMT</p> */}
       </div>
       <div>
         <img src={slider2} alt="" />
-        <p className="legend">Legend 2</p>
+        {/* <p className="legend">Legend 2</p> */}
       </div>
       <div>
         <img src={slider3} alt="" />
-        <p className="legend">Legend 3</p>
+        {/* <p className="legend">Legend 3</p> */}
       </div>
     </Carousel>
   );

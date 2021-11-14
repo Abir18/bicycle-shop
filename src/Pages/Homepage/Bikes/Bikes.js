@@ -21,7 +21,7 @@ const Products = () => {
           variant="h4"
           component="div"
         >
-          Our New Arrivals {bikes.length}
+          Our New Arrivals
         </Typography>
         <Container>
           <Grid

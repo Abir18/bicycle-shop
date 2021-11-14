@@ -68,9 +68,9 @@ const Navigation = () => {
                     component="div"
                     sx={{
                       color: '#000',
-                      mr: 50,
+                      mr: 3,
                       '&:hover': {
-                        color: '#5Ce7ed',
+                        color: '#FE495C',
                       },
                     }}
                   >
@@ -86,15 +86,37 @@ const Navigation = () => {
                 {user?.email ? (
                   <>
                     <Box>
-                      <NavLink to="/dashboard">
-                        <Button color="inherit">Dashboard</Button>
+                      <NavLink
+                        to="/dashboard"
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <Typography
+                          variant="h6"
+                          component="div"
+                          sx={{
+                            color: '#000',
+                            mr: 2,
+                            '&:hover': {
+                              color: '#5Ce7ed',
+                            },
+                          }}
+                        >
+                          DashBoard
+                        </Typography>
                       </NavLink>
                     </Box>
-                    <span style={{ margin: '0 10px' }}>
-                      Name: {user.displayName}{' '}
+                    <span
+                      style={{ margin: '5px 15px 0px 200px', color: '#000' }}
+                    >
+                      {user.displayName}{' '}
                     </span>
-                    <span> {user.email}</span>
-                    <Button onClick={logOutUser} color="inherit">
+                    {/* <span style={{ color: '#000' }}> {user.email}</span> */}
+                    <Button
+                      onClick={logOutUser}
+                      variant="outlined"
+                      color="inherit"
+                      sx={{ color: '#000' }}
+                    >
                       Logout
                     </Button>
                   </>
