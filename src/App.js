@@ -5,8 +5,9 @@ import Products from './Pages/Homepage/Products/Products';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
-import Dashboard from './Pages/Dashboard/Dashboard';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Purchase from './Pages/Purchase/Purchase';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/purchase">
+              <Purchase />
             </PrivateRoute>
           </Switch>
         </BrowserRouter>

@@ -10,6 +10,8 @@ const Home = () => {
       <Navigation />
       <Slider />
       <Bikes />
+      <h1>Rating</h1>
+      <h1>Extra Section</h1>
       <Footer />
     </div>
   );

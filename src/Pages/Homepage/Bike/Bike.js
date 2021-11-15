@@ -8,6 +8,7 @@ import {
   CardContent,
 } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Bike = ({ bike }) => {
   const { name, description, price, image } = bike;
@@ -35,19 +36,21 @@ const Bike = ({ bike }) => {
               {description}
             </Typography>
           </CardContent>
-          <Button
-            variant="contained"
-            style={{
-              padding: '7px 20px',
-              background: 'linear-gradient(to right, #2FE1AE , #5Ce7ed)',
-              fontSize: '16px',
-              border: 'none',
-              fontWeight: 700,
-              marginBottom: '20px',
-            }}
-          >
-            Buy Now
-          </Button>
+          <Link to="/purchase" style={{ textDecoration: 'none' }}>
+            <Button
+              variant="contained"
+              style={{
+                padding: '7px 20px',
+                background: 'linear-gradient(to right, #2FE1AE , #5Ce7ed)',
+                fontSize: '16px',
+                border: 'none',
+                fontWeight: 700,
+                marginBottom: '20px',
+              }}
+            >
+              Buy Now
+            </Button>
+          </Link>
         </Card>
       </Grid>
 
