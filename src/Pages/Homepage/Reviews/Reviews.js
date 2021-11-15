@@ -1,4 +1,4 @@
-import { Container, Grid, Paper } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Review from '../Review/Review';
@@ -7,7 +7,7 @@ const Reviews = () => {
   const [userReview, setUserReview] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:5000/reviews`).then(res => {
-      console.log(res.data, 'reviews');
+      //   console.log(res.data, 'reviews');
       setUserReview(res.data);
     });
   }, []);

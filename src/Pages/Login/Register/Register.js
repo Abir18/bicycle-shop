@@ -63,6 +63,7 @@ const Register = () => {
                     label="Your Name"
                     variant="standard"
                     name="name"
+                    required
                     onBlur={handleOnBlur}
                   />
                   <TextField
@@ -72,6 +73,7 @@ const Register = () => {
                     variant="standard"
                     name="email"
                     type="email"
+                    required
                     onBlur={handleOnBlur}
                   />
                   <TextField
@@ -81,6 +83,7 @@ const Register = () => {
                     variant="standard"
                     name="password"
                     type="password"
+                    required
                     onBlur={handleOnBlur}
                   />
                   <TextField
@@ -90,6 +93,7 @@ const Register = () => {
                     variant="standard"
                     name="password2"
                     type="password"
+                    required
                     onBlur={handleOnBlur}
                   />
 

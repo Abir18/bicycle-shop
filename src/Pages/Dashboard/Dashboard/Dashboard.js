@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
@@ -20,6 +21,8 @@ import useAuth from '../../../hooks/useAuth';
 import Payment from '../Payment/Payment';
 import MyOrders from '../MyOrders/MyOrders';
 import Review from '../Review/Review';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+
 // import AddDoctor from '../AddDoctor/AddDoctor';
 // import DashboardHome from '../DashboardHome/DashboardHome';
 // import MakeAdmin from '../MakeAdmin/MakeAdmin';
@@ -31,7 +34,7 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const { admin } = useAuth();
+  const { admin, logOutUser } = useAuth();
   let { path, url } = useRouteMatch();
 
   const handleDrawerToggle = () => {
@@ -58,60 +61,69 @@ function Dashboard(props) {
         </>
       )}
       <Divider />
-      <Link to={`${url}/my-orders`} style={{ textDecoration: 'none' }}>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            color: '#000',
-            mt: 3,
-            '&:hover': {
-              color: '#FE495C',
-            },
-          }}
-        >
-          My Orders
-        </Typography>
-        {/* <Button color="inherit" sx={{ color: '#000' }}>
-                    Home
-                  </Button> */}
-      </Link>
-      <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            color: '#000',
-            my: 5,
-            '&:hover': {
-              color: '#FE495C',
-            },
-          }}
-        >
-          Pay Now
-        </Typography>
-        {/* <Button color="inherit" sx={{ color: '#000' }}>
-                    Home
-                  </Button> */}
-      </Link>
-      <Link to={`${url}/review`} style={{ textDecoration: 'none' }}>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            color: '#000',
-            mt: 3,
-            '&:hover': {
-              color: '#FE495C',
-            },
-          }}
-        >
-          Review
-        </Typography>
-        {/* <Button color="inherit" sx={{ color: '#000' }}>
-                    Home
-                  </Button> */}
-      </Link>
+      {!admin && (
+        <>
+          <Link to={`${url}/my-orders`} style={{ textDecoration: 'none' }}>
+            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+              My Orders
+            </Button>
+          </Link>
+          <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}>
+            <Button
+              variant="contained"
+              color="inherit"
+              sx={{ color: '#000', mt: 3 }}
+            >
+              Pay Now
+            </Button>
+          </Link>
+          <Link to={`${url}/review`} style={{ textDecoration: 'none' }}>
+            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+              Review
+            </Button>
+          </Link>
+        </>
+      )}
+      {admin && (
+        <>
+          <Link to={`${url}/make-admin`} style={{ textDecoration: 'none' }}>
+            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+              Make Admin
+            </Button>
+          </Link>
+          <Link
+            to={`${url}/manage-all-orders`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+              Manage All Orders
+            </Button>
+          </Link>
+          <Link to={`${url}/add-product`} style={{ textDecoration: 'none' }}>
+            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+              Add A Product
+            </Button>
+          </Link>
+          <Link
+            to={`${url}/manage-products`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Button color="inherit" sx={{ color: '#000', mt: 3, ml: 3 }}>
+              Manage Products
+            </Button>
+          </Link>
+        </>
+      )}
+      {/* <Link to={`/logout`} style={{ textDecoration: 'none' }}> */}
+      <Button
+        onClick={logOutUser}
+        color="inherit"
+        variant="contained"
+        sx={{ color: '#000', mt: 5 }}
+      >
+        Logout
+      </Button>
+      {/* </Link> */}
     </div>
   );
 
@@ -195,6 +207,9 @@ function Dashboard(props) {
           {/* <Route exact path={path}>
             <DashboardHome></DashboardHome>
           </Route> */}
+          <Route path={`${path}/make-admin`}>
+            <MakeAdmin />
+          </Route>
           <Route path={`${path}/payment`}>
             <Payment />
           </Route>

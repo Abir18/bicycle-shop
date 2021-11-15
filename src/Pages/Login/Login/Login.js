@@ -69,6 +69,7 @@ const Login = () => {
                     variant="standard"
                     name="email"
                     type="email"
+                    required
                     onBlur={handleOnChange}
                   />
                   <TextField
@@ -78,6 +79,7 @@ const Login = () => {
                     variant="standard"
                     name="password"
                     type="password"
+                    required
                     onBlur={handleOnChange}
                   />
 
