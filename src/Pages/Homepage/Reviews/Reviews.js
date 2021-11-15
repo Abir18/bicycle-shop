@@ -6,7 +6,7 @@ import Review from '../Review/Review';
 const Reviews = () => {
   const [userReview, setUserReview] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/reviews`).then(res => {
+    axios.get(`https://polar-bastion-01816.herokuapp.com/reviews`).then(res => {
       //   console.log(res.data, 'reviews');
       setUserReview(res.data);
     });

@@ -20,12 +20,12 @@ import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Payment from '../Payment/Payment';
 import MyOrders from '../MyOrders/MyOrders';
-import Review from '../Review/Review';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import AddProduct from '../AdminPages/AddProducts/AddProduct';
 import ManageProducts from '../AdminPages/ManageProducts/ManageProducts';
 import ManageAllOrders from '../AdminPages/ManageAllOrders/ManageAllOrders';
+import MakeReview from '../MakeReview/MakeReview';
 
 // import AddDoctor from '../AddDoctor/AddDoctor';
 // import DashboardHome from '../DashboardHome/DashboardHome';
@@ -57,25 +57,27 @@ function Dashboard(props) {
       <Divider />
       {!admin && (
         <>
-          <Link to={`${url}/my-orders`} style={{ textDecoration: 'none' }}>
-            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
-              My Orders
-            </Button>
-          </Link>
-          <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}>
-            <Button
-              variant="contained"
-              color="inherit"
-              sx={{ color: '#000', mt: 3 }}
-            >
-              Pay Now
-            </Button>
-          </Link>
-          <Link to={`${url}/review`} style={{ textDecoration: 'none' }}>
-            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
-              Review
-            </Button>
-          </Link>
+          <Box>
+            <Link to={`${url}/my-orders`} style={{ textDecoration: 'none' }}>
+              <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+                My Orders
+              </Button>
+            </Link>
+          </Box>
+          <Box>
+            <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}>
+              <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+                Pay Now
+              </Button>
+            </Link>
+          </Box>
+          <Box>
+            <Link to={`${url}/review`} style={{ textDecoration: 'none' }}>
+              <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
+                Review
+              </Button>
+            </Link>
+          </Box>
         </>
       )}
       {admin && (
@@ -220,7 +222,7 @@ function Dashboard(props) {
             <MyOrders />
           </Route>
           <Route path={`${path}/review`}>
-            <Review />
+            <MakeReview />
           </Route>
         </Switch>
       </Box>

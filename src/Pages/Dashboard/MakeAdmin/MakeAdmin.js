@@ -18,21 +18,23 @@ const MakeAdmin = () => {
     // console.log(user);
     e.preventDefault();
 
-    axios.put(`http://localhost:5000/users/admin`, user).then(res => {
-      console.log(res.data);
-      const { data } = res;
-      if (data.modifiedCount) {
-        alert('Admin Created Successfully');
-      }
-      if (data.matchedCount === 1 && data.modifiedCount === 0) {
-        alert('This User is already an Admin');
-      }
-      if (data.matchedCount === 0 && data.modifiedCount === 0) {
-        alert('User Not Found');
-      }
-    });
+    axios
+      .put(`https://polar-bastion-01816.herokuapp.com/users/admin`, user)
+      .then(res => {
+        console.log(res.data);
+        const { data } = res;
+        if (data.modifiedCount) {
+          alert('Admin Created Successfully');
+        }
+        if (data.matchedCount === 1 && data.modifiedCount === 0) {
+          alert('This User is already an Admin');
+        }
+        if (data.matchedCount === 0 && data.modifiedCount === 0) {
+          alert('User Not Found');
+        }
+      });
 
-    // fetch('http://localhost:5000/users/admin', {
+    // fetch('https://polar-bastion-01816.herokuapp.com/users/admin', {
     //   method: 'PUT',
     //   headers: {
     //     'content-type': 'application/json',

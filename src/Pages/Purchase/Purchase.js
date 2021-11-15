@@ -22,10 +22,12 @@ const Purchase = () => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bikes/${id}`).then(res => {
-      console.log(res.data, 'single');
-      setProduct(res.data);
-    });
+    axios
+      .get(`https://polar-bastion-01816.herokuapp.com/bikes/${id}`)
+      .then(res => {
+        console.log(res.data, 'single');
+        setProduct(res.data);
+      });
   }, [id]);
 
   const initialUserData = {
@@ -46,13 +48,15 @@ const Purchase = () => {
 
   const handleLoginForm = e => {
     e.preventDefault();
-    axios.post('http://localhost:5000/orders', userData).then(response => {
-      if (response.data.insertedId) {
-        alert('You Ordered Successfully');
-        history.push('/');
-      }
-      //   console.log(response);
-    });
+    axios
+      .post('https://polar-bastion-01816.herokuapp.com/orders', userData)
+      .then(response => {
+        if (response.data.insertedId) {
+          alert('You Ordered Successfully');
+          history.push('/');
+        }
+        //   console.log(response);
+      });
   };
 
   console.log(userData);

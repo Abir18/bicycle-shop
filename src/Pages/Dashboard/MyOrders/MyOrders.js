@@ -17,23 +17,27 @@ const MyOrders = () => {
   const { user } = useAuth();
   const { email } = user;
   useEffect(() => {
-    axios.get(`http://localhost:5000/orders?email=${email}`).then(res => {
-      // console.log(res);
-      setOrders(res.data);
-    });
+    axios
+      .get(`https://polar-bastion-01816.herokuapp.com/orders?email=${email}`)
+      .then(res => {
+        // console.log(res);
+        setOrders(res.data);
+      });
   }, [email]);
 
   const handleDeleteOrder = id => {
     const sure = window.confirm('Are You Sure to Delete this Order?');
     if (sure) {
-      axios.delete(`http://localhost:5000/orders/${id}`).then(res => {
-        // console.log(data);
-        if (res.data.deletedCount === 1) {
-          alert('Successfully Deleted Service');
-          const remainingOrders = orders.filter(order => order._id !== id);
-          setOrders(remainingOrders);
-        }
-      });
+      axios
+        .delete(`https://polar-bastion-01816.herokuapp.com/orders/${id}`)
+        .then(res => {
+          // console.log(data);
+          if (res.data.deletedCount === 1) {
+            alert('Successfully Deleted Service');
+            const remainingOrders = orders.filter(order => order._id !== id);
+            setOrders(remainingOrders);
+          }
+        });
     }
   };
   return (
