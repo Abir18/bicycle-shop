@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Button,
@@ -8,20 +8,41 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Navigation from '../Shared/Navigation/Navigation';
 import axios from 'axios';
 
 const Purchase = () => {
   const { user } = useAuth();
+  const { id } = useParams();
   const history = useHistory();
   //   const { displayName, email } = user;
+
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/bikes/${id}`).then(res => {
+      console.log(res.data, 'single');
+      setProduct(res.data);
+    });
+  }, [id]);
+
   const initialUserData = {
-    name: user.displayName,
-    email: user.email,
+    name: user?.displayName,
+    email: user?.email,
+    productName: product?.name,
+    productPrice: product?.price,
   };
   const [userData, setUserData] = useState(initialUserData);
+
+  const handleOnBlur = e => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newUserData = { ...userData };
+    newUserData[field] = value;
+    setUserData(newUserData);
+  };
 
   const handleLoginForm = e => {
     e.preventDefault();
@@ -33,13 +54,7 @@ const Purchase = () => {
       //   console.log(response);
     });
   };
-  const handleOnBlur = e => {
-    const field = e.target.name;
-    const value = e.target.value;
-    const newUserData = { ...userData };
-    newUserData[field] = value;
-    setUserData(newUserData);
-  };
+
   console.log(userData);
 
   return (
@@ -69,6 +84,22 @@ const Purchase = () => {
                   variant="standard"
                   name="email"
                   type="email"
+                  onBlur={handleOnBlur}
+                />
+                <TextField
+                  sx={{ width: '60%', mb: 7 }}
+                  id="standard-basic"
+                  variant="standard"
+                  value={product.name}
+                  name="productName"
+                  onBlur={handleOnBlur}
+                />
+                <TextField
+                  sx={{ width: '60%', mb: 7 }}
+                  id="standard-basic"
+                  variant="standard"
+                  value={product.price}
+                  name="productPrice"
                   onBlur={handleOnBlur}
                 />
                 <TextField

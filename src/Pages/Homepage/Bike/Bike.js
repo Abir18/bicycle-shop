@@ -11,8 +11,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Bike = ({ bike }) => {
-  const { name, description, price, image } = bike;
-  console.log(image);
+  const { _id, name, description, price, image } = bike;
+  const url = `/purchase/${_id}`;
   return (
     <div>
       <Grid item xs={2} sm={4} md={4} sx={{ m: 2 }}>
@@ -36,7 +36,7 @@ const Bike = ({ bike }) => {
               {description}
             </Typography>
           </CardContent>
-          <Link to="/purchase" style={{ textDecoration: 'none' }}>
+          <Link to={url} style={{ textDecoration: 'none' }}>
             <Button
               variant="contained"
               style={{

@@ -41,8 +41,8 @@ function Dashboard(props) {
   const drawer = (
     <div>
       <Toolbar />
-      <Link to="/appointment">
-        <ListItemText primary="Appointment" />
+      <Link to="/">
+        <ListItemText primary="Home" />
       </Link>
       <Link to={`${url}`}>
         <ListItemText primary="Dashboard" />
