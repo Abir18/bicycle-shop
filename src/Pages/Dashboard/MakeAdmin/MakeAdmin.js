@@ -24,7 +24,10 @@ const MakeAdmin = () => {
       if (data.modifiedCount) {
         alert('Admin Created Successfully');
       }
-      if (data.modifiedCount === 0) {
+      if (data.matchedCount === 1 && data.modifiedCount === 0) {
+        alert('This User is already an Admin');
+      }
+      if (data.matchedCount === 0 && data.modifiedCount === 0) {
         alert('User Not Found');
       }
     });

@@ -22,6 +22,10 @@ import Payment from '../Payment/Payment';
 import MyOrders from '../MyOrders/MyOrders';
 import Review from '../Review/Review';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import AddProduct from '../AdminPages/AddProducts/AddProduct';
+import ManageProducts from '../AdminPages/ManageProducts/ManageProducts';
+import ManageAllOrders from '../AdminPages/ManageAllOrders/ManageAllOrders';
 
 // import AddDoctor from '../AddDoctor/AddDoctor';
 // import DashboardHome from '../DashboardHome/DashboardHome';
@@ -44,22 +48,12 @@ function Dashboard(props) {
   const drawer = (
     <div>
       <Toolbar />
-      <Link to="/">
-        <ListItemText primary="Home" />
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Button color="inherit" sx={{ color: '#000', mb: 3 }}>
+          Home
+        </Button>
       </Link>
-      <Link to={`${url}`}>
-        <ListItemText primary="Dashboard" />
-      </Link>
-      {admin && (
-        <>
-          <Link to={`${url}/add-doctor`}>
-            <ListItemText primary="Add Doctor" />
-          </Link>
-          <Link to={`${url}/make-admin`}>
-            <ListItemText primary="Make Admin" />
-          </Link>
-        </>
-      )}
+
       <Divider />
       {!admin && (
         <>
@@ -108,22 +102,22 @@ function Dashboard(props) {
             to={`${url}/manage-products`}
             style={{ textDecoration: 'none' }}
           >
-            <Button color="inherit" sx={{ color: '#000', mt: 3, ml: 3 }}>
+            <Button color="inherit" sx={{ color: '#000', mt: 3 }}>
               Manage Products
             </Button>
           </Link>
         </>
       )}
-      {/* <Link to={`/logout`} style={{ textDecoration: 'none' }}> */}
-      <Button
-        onClick={logOutUser}
-        color="inherit"
-        variant="contained"
-        sx={{ color: '#000', mt: 5 }}
-      >
-        Logout
-      </Button>
-      {/* </Link> */}
+      <Box>
+        <Button
+          onClick={logOutUser}
+          color="inherit"
+          variant="contained"
+          sx={{ color: '#000', mt: 5 }}
+        >
+          Logout
+        </Button>
+      </Box>
     </div>
   );
 
@@ -207,9 +201,18 @@ function Dashboard(props) {
           {/* <Route exact path={path}>
             <DashboardHome></DashboardHome>
           </Route> */}
-          <Route path={`${path}/make-admin`}>
+          <AdminRoute path={`${path}/manage-all-orders`}>
+            <ManageAllOrders />
+          </AdminRoute>
+          <AdminRoute path={`${path}/add-product`}>
+            <AddProduct />
+          </AdminRoute>
+          <AdminRoute path={`${path}/manage-products`}>
+            <ManageProducts />
+          </AdminRoute>
+          <AdminRoute path={`${path}/make-admin`}>
             <MakeAdmin />
-          </Route>
+          </AdminRoute>
           <Route path={`${path}/payment`}>
             <Payment />
           </Route>

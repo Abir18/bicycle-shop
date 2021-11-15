@@ -113,8 +113,8 @@ const useFirebase = () => {
   // Check an User is Admin or not
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${user.email}`).then(res => {
-      console.log(res);
-      console.log(res.data);
+      // console.log(res);
+      // console.log(res.data);
       setAdmin(res.data.admin);
     });
 
